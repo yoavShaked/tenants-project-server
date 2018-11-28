@@ -33,9 +33,9 @@ router.post('/', auth, validateTenant, async (request, response) => {
     response.send(await getTenants(request.user));
 });
 
-router.put('/:id', auth, validateTenant, async (request, response) => {
-    const { name, phoneNumber, address, debt } = request.body;
-    const tenant = await Tenant.findByIdAndUpdate(request.params.id, {
+router.put('/', auth, validateTenant, async (request, response) => {
+    const { name, phoneNumber, address, debt,id } = request.body;
+    const tenant = await Tenant.findByIdAndUpdate(id, {
         name,
         address,
         phoneNumber,
