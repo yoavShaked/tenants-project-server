@@ -7,6 +7,7 @@ module.exports = function (request, response, next){
     if(!token) return response.status(401).send('Access denide. No token provided.');
 
     try{
+        
         const decodePayload = jwt.verify(token, "123456");
         request.user = decodePayload;
         next();

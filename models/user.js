@@ -16,6 +16,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         minlength: 4,
+        maxlength:255
     },
     tenants: [
         {
