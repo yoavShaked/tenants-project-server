@@ -52,8 +52,8 @@ router.put('/', auth, validateTenant, async (request, response) => {
     response.send(await getTenants(request.user));
 });
 
-router.delete('/', auth, async (request, response) => {
-    const tenant = await Tenant.findByIdAndRemove(request.user);
+router.delete('/:id', auth, async (request, response) => {
+    const tenant = await Tenant.findByIdAndRemove(request.params.id);
     if (!tenant) {
         return response.status(400).send('Tenant with the given id was not found');
     }
